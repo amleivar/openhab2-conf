@@ -1,0 +1,10 @@
+Number				hvacMode	"[MAP(hvacMode.map):%s]"	<heating>	(gHVAC)
+Number				hvacAutoSensor	"[MAP(hvacAutoSensor.map):%s]"			(gHVAC)
+Number				hvacLow		"[%.1fºC]"					(gHVAC)
+Number				hvacHigh	"[%.1fºC]"					(gHVAC)
+String				hvacSummary	"[%s]"
+String				hvacHelp
+
+Group:Number:AVG 		hvacSensAll
+Group:Number:AVG 		hvacSensLB
+Group:Number:AVG 		hvacSensLR

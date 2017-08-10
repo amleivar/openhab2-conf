@@ -1,0 +1,105 @@
+/**
+ * Control HVAC system depending on sensors as well as mode selected
+ */
+
+rule "HVAC control values changed"
+when
+	Item hvacMode changed or
+	Item hvacAutoSensor changed or
+	Item hvacLow changed or
+	Item hvacHigh changed or
+	Item tempLiving changed or
+	Item tempRoom changed or
+	Item tempBedroom changed
+then
+	logInfo("hvacControl.rules", "Running hvacControl")
+
+	var Number mode = hvacMode.state
+	if(mode == 0) // OFF
+	{
+		logInfo("hvacControl.rules", "Off")
+		sendCommand(airConditioner, OFF)
+		sendCommand(boiler, OFF)
+	}
+	else if(mode == 20) // Cool
+	{
+                logInfo("hvacControl.rules", "Cool")
+		sendCommand(airConditioner, ON)
+		sendCommand(boiler, OFF)
+	}
+	else if(mode == 100) // Heat
+	{
+                logInfo("hvacControl.rules", "Heat")
+		sendCommand(airConditioner, OFF)
+		sendCommand(boiler, ON)
+	}
+	else if(mode == 60) // Auto
+	{
+                logInfo("hvacControl.rules", "Auto")
+		var Number tempMeasured = 25
+		var Number sensors = hvacAutoSensor.state
+		var Number low = hvacLow.state
+		var Number high = hvacHigh.state
+		if(sensors == 0) // All
+		{
+			logInfo("hvacControl.rules", "All sensors")
+			tempMeasured = hvacSensAll.state
+		}
+		else if(sensors == 1) // Living
+                {
+                        logInfo("hvacControl.rules", "Sensors L")
+			tempMeasured = tempLiving.state
+                }
+		else if(sensors == 2) // Room
+                {
+                        logInfo("hvacControl.rules", "Sensors R")
+                        tempMeasured = tempRoom.state
+                }
+		else if(sensors == 3) // Bedroom
+                {
+                        logInfo("hvacControl.rules", "Sensors B")
+                        tempMeasured = tempBedroom.state
+                }
+		else if(sensors == 4) // Living+Bedroom
+                {
+                        logInfo("hvacControl.rules", "Sensors L+B")
+			tempMeasured = hvacSensLB.state
+                }
+		else if(sensors == 5) // Living+Room
+                {
+                        logInfo("hvacControl.rules", "Sensors L+R")
+			tempMeasured = hvacSensLR.state
+                }
+		else
+		{
+                	logWarn("hvacControl.rules", "Invalid sensors " + sensors)
+		}
+
+		 logInfo("hvacControl.rules", "tempMeasured="+tempMeasured)
+		 logInfo("hvacControl.rules", "low="+low)
+		 logInfo("hvacControl.rules", "high="+high)
+
+		if(tempMeasured < low)
+		{
+			logInfo("hvacControl.rules", "temp is lower, heat the thing")
+			sendCommand(airConditioner, OFF)
+			sendCommand(boiler, ON)
+		}
+		else if(tempMeasured > high)
+		{
+			logInfo("hvacControl.rules", "temp is higher, cool the thing")
+			sendCommand(airConditioner, ON)
+                        sendCommand(boiler, OFF)
+		}
+		else
+		{
+			logInfo("hvacControl.rules", "temp is in confort range")
+			sendCommand(airConditioner, OFF)
+                        sendCommand(boiler, OFF)
+		}
+	}
+	else
+	{
+		logWarn("hvacControl.rules", "Invalid mode " + mode)
+	}
+end

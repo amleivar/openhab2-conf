@@ -1,0 +1,10 @@
+rule "Update hvacSummary"
+when
+	Item hvacLow received update or
+	Item hvacHigh received update
+then
+	var fLow = (hvacLow.state as DecimalType).floatValue
+	var fHigh = (hvacHigh.state as DecimalType).floatValue
+	var String str = String::format("[%1$.1fºC - %2$.1fºC]", fLow, fHigh)
+	postUpdate(hvacSummary, str)
+end

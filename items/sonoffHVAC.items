@@ -1,0 +1,7 @@
+Switch airConditioner 			"Air conditioner" 				<climate> 	(gRelay)		{ mqtt=">[mqttBroker:cmnd/ac/POWER2:command:*:default], <[mqttBroker:stat/ac/POWER2:state:default]" }
+Switch airConditionerReachable 	"Air conditioner: reachable" 				(gReachable) 	{ mqtt="<[mqttBroker:tele/ac/LWT:state:MAP(reachable.map)]" }
+Number airConditionerRSSI 		"Air conditioner: RSSI [%d %%]" 			(gRSSI) 		{ mqtt="<[mqttBroker:tele/ac/STATE:state:JSONPATH($.Wifi.RSSI)]" }
+
+Switch boiler 					"Boiler" 						<heating> 	(gRelay)		{ mqtt=">[mqttBroker:cmnd/boiler/POWER2:command:*:default], <[mqttBroker:stat/boiler/POWER2:state:default]" }
+Switch boilerReachable 			"Boiler: reachable" 						(gReachable) 	{ mqtt="<[mqttBroker:tele/boiler/LWT:state:MAP(reachable.map)]" }
+Number boilerRSSI 				"Boiler: RSSI [%d %%]" 						(gRSSI) 		{ mqtt="<[mqttBroker:tele/boiler/STATE:state:JSONPATH($.Wifi.RSSI)]" }

@@ -1,0 +1,12 @@
+Bridge mihome:bridge:f0b429cc4ebe "Xiaomi Gateway" [ serialNumber="f0b429cc4ebe", ipAddress="192.168.1.25", port=9898, key="9qjwe0h4trxt3nl3", pollingInterval=6000 ] {
+    Thing mihome:gateway:f0b429cc4ebe "Xiaomi Mi Smart Home Gateway" [ itemId="f0b429cc4ebe" ]
+
+    Thing mihome:sensor_ht:158d0001581338 "Xiaomi Temperature Sensor" [ itemId="158d0001581338" ]
+    Thing mihome:sensor_ht:158d000159ed3c "Xiaomi Temperature Sensor" [ itemId="158d000159ed3c" ]
+    Thing mihome:sensor_ht:158d000159ed6b "Xiaomi Temperature Sensor" [ itemId="158d000159ed6b" ]
+
+    Thing mihome:sensor_motion:158d00013f793f "Xiaomi Motion Sensor" [ itemId="158d00013f793f" ]
+
+    Thing mihome:sensor_switch:158d00012889ef "Xiaomi Mi Wireless Switch" [ itemId="158d00012889ef" ]
+    Thing mihome:sensor_switch:158d00012564e9 "Xiaomi Mi Wireless Switch" [ itemId="158d00012564e9" ]
+}

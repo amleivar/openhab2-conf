@@ -1,0 +1,8 @@
+Number	tempLiving	<temperature>	(gTemp,hvacSensAll,hvacSensLB,hvacSensLR)	{ channel="mihome:sensor_ht:158d0001581338:temperature" }
+Number  tempLivingBatt	<battery>	(gBatt)	{ channel="mihome:sensor_ht:158d0001581338:batteryLevel" }
+
+Number	tempRoom	<temperature>	(gTemp,hvacSensAll,hvacSensLR)			{ channel="mihome:sensor_ht:158d000159ed6b:temperature" }
+Number  tempRoomBatt	<battery>	(gBatt)	{ channel="mihome:sensor_ht:158d000159ed6b:batteryLevel" }
+
+Number	tempBedroom	<temperature>	(gTemp,hvacSensAll,hvacSensLB)			{ channel="mihome:sensor_ht:158d000159ed3c:temperature" }
+Number  tempBedroomBatt	<battery>	(gBatt)	{ channel="mihome:sensor_ht:158d000159ed3c:batteryLevel" }

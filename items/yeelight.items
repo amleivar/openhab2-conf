@@ -1,0 +1,3 @@
+Dimmer		LivinLampBrightnes 	"Bright"  	{channel="yeelight:Wonder:0x0000000003332a79:Brightness"}
+Color		LivinLampColor	 	"Color"  	{channel="yeelight:Wonder:0x0000000003332a79:Color"}
+Dimmer		LivinLampColorTemp 	"ColorTemp"  	{channel="yeelight:Wonder:0x0000000003332a79:Color_Temperature"}

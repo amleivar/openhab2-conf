@@ -1,0 +1,13 @@
+rule "Notify on ac change"
+when
+	Item airConditioner changed
+then
+	sendBroadcastNotification("AC "+airConditioner.state)
+end
+
+rule "Notify on boiler change"
+when
+        Item boiler changed 
+then
+	sendBroadcastNotification("Boiler "+boiler.state)
+end
