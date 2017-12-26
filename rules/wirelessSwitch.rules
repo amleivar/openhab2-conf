@@ -1,0 +1,22 @@
+rule "Xiaomi Switch"
+when
+    Channel "mihome:sensor_switch:158d00012889ef:button" triggered
+then
+    var actionName = receivedEvent.getEvent()
+    switch(actionName) {
+        case "SHORT_PRESSED": {
+		if(LivinLampSw.state == OFF) {
+			LivinLampSw.sendCommand(ON)
+		} else {
+			LivinLampSw.sendCommand(OFF)
+		}
+        }
+        case "DOUBLE_PRESSED": {
+		LivinLampSw.sendCommand(OFF)
+        }
+        case "LONG_PRESSED": {
+        }
+        case "LONG_RELEASED": {
+        }
+    }
+end
