@@ -21,4 +21,9 @@ sitemap default label="Sabal's house"
 		Default item=LivinLampColor
 		Default item=LivinLampColorTemp
 	}
+
+	Frame label="Rollershutter" {
+		Switch item=shutterLiv
+		Slider item=shutterLiv
+	}
 }

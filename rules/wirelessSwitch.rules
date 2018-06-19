@@ -1,6 +1,6 @@
 rule "Xiaomi Switch"
 when
-    Channel "mihome:sensor_switch:158d00012889ef:button" triggered
+    Channel "mihome:sensor_switch:f0b429cc4ebe:158d00012889ef:button" triggered
 then
     var actionName = receivedEvent.getEvent()
     switch(actionName) {

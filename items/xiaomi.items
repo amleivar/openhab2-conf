@@ -1,8 +1,12 @@
-Number	tempLiving	<temperature>	(gTemp,hvacSensAll,hvacSensLB,hvacSensLR)	{ channel="mihome:sensor_ht:158d0001581338:temperature" }
-Number  tempLivingBatt	<battery>	(gBatt)	{ channel="mihome:sensor_ht:158d0001581338:batteryLevel" }
+Number	tempLiving	<temperature>	(gTemp,hvacSensAll,hvacSensLB,hvacSensLR)	{ channel="mihome:sensor_ht:f0b429cc4ebe:158d0001581338:temperature" }
+Number  tempLivingBatt	<battery>	(gBatt)	{ channel="mihome:sensor_ht:f0b429cc4ebe:158d0001581338:batteryLevel" }
 
-Number	tempRoom	<temperature>	(gTemp,hvacSensAll,hvacSensLR)			{ channel="mihome:sensor_ht:158d000159ed6b:temperature" }
-Number  tempRoomBatt	<battery>	(gBatt)	{ channel="mihome:sensor_ht:158d000159ed6b:batteryLevel" }
+Number	tempRoom	<temperature>	(gTemp,hvacSensAll,hvacSensLR)			{ channel="mihome:sensor_ht:f0b429cc4ebe:158d000159ed6b:temperature" }
+Number  tempRoomBatt	<battery>	(gBatt)	{ channel="mihome:sensor_ht:f0b429cc4ebe:158d000159ed6b:batteryLevel" }
 
-Number	tempBedroom	<temperature>	(gTemp,hvacSensAll,hvacSensLB)			{ channel="mihome:sensor_ht:158d000159ed3c:temperature" }
-Number  tempBedroomBatt	<battery>	(gBatt)	{ channel="mihome:sensor_ht:158d000159ed3c:batteryLevel" }
+Number	tempBedroom	<temperature>	(gTemp,hvacSensAll,hvacSensLB)			{ channel="mihome:sensor_ht:f0b429cc4ebe:158d000159ed3c:temperature" }
+Number  tempBedroomBatt	<battery>	(gBatt)	{ channel="mihome:sensor_ht:f0b429cc4ebe:158d000159ed3c:batteryLevel" }
+
+Switch motionHall <motion>  { channel="mihome:sensor_motion:158d00013f793f:motion" }
+DateTime motionLastHall "[%1$tY-%1$tm-%1$td  %1$tH:%1$tM]" <clock-on> { channel="mihome:sensor_motion:158d00013f793f:lastMotion" }
+Number motionHallBatt <battery> { channel="mihome:sensor_motion:158d00013f793f:batteryLevel" }

@@ -1,0 +1,5 @@
+Switch blindsLivUp 	"Blinds living up" 	<climate> 	(gBlindsLiv)		{ mqtt=">[mqttBroker:cmnd/blinds-liv/POWER1:command:*:default], <[mqttBroker:stat/blinds-liv/POWER1:state:default]" }
+Switch blindsLivDw 	"Blinds living down"	<climate> 	(gBlindsLiv)		{ mqtt=">[mqttBroker:cmnd/blinds-liv/POWER2:command:*:default], <[mqttBroker:stat/blinds-liv/POWER2:state:default]" }
+
+Rollershutter shutterLiv "ShutterLiving  [%d %%]"  <rollershutter>
+
