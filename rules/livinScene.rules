@@ -1,0 +1,33 @@
+rule "livin scene"
+when
+    Item livinScene changed
+then
+    logInfo("livinScene","State changed to {}", livinScene.state)
+    switch (livinScene.state) {
+        case 0: {
+    		// OFF
+    		LivinLampSw.sendCommand(OFF)
+        }
+        case 1: {
+    		// MIN
+    		LivinLampSw.sendCommand(ON)
+    		LivinLampBright.sendCommand(1)
+    		LivinLampTemp.sendCommand(2000)
+        }
+        case 2: {
+    		// MEDIUM
+    		LivinLampSw.sendCommand(ON)
+    		LivinLampBright.sendCommand(30)
+    		LivinLampTemp.sendCommand(3500)
+        }
+        case 3: {
+    		// MAX
+    		LivinLampSw.sendCommand(ON)
+    		LivinLampBright.sendCommand(100)
+    		LivinLampTemp.sendCommand(3500)
+        }
+        default: {
+            logInfo("livinScene","incorrect state: {}", livinScene.state)
+        }
+    }
+end

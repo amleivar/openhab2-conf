@@ -5,11 +5,11 @@ sitemap default label="Sabal's house"
 		Text item=hvacHelp label="" icon=none visibility=[hvacMode==60]
 		Switch item=hvacAutoSensor label="Sensors" icon=temperature mappings=[0="All", 1="L", 2="R", 3="B", 4="L+B", 5="L+R"] visibility=[hvacMode==60]
 		Text item=hvacSummary icon=settings  visibility=[hvacMode==60] {
-			Setpoint item=hvacLow label="Lower" minValue=15 maxValue=22 step=0.2
+			Setpoint item=hvacLow label="Lower" minValue=15 maxValue=24 step=0.2
 			Setpoint item=hvacHigh label="Upper" minValue=26 maxValue=31 step=0.2
 		}
 	}
-	
+
 	Frame label="Temperature" {
 		Text item=tempLiving label=Living
 		Text item=tempBedroom label=Bedroom
@@ -20,6 +20,11 @@ sitemap default label="Sabal's house"
 		Default item=LivinLampBrightnes
 		Default item=LivinLampColor
 		Default item=LivinLampColorTemp
+	}
+
+	Frame label="Scenes" {
+		Switch	item=livinScene mappings=[0="OFF", 1="Min", 2="Medium", 3="Max"]
+		Switch	item=roomScene mappings=[0="OFF", 1="Min", 2="Medium", 3="Max"]
 	}
 
 	Frame label="Rollershutter" {

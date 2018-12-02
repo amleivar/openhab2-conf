@@ -14,6 +14,7 @@ when
 then
 	logInfo("hvacControl.rules", "Running hvacControl")
 
+	var Number hysteresis = 0.5
 	var Number mode = hvacMode.state
 	if(mode == 0) // OFF
 	{
@@ -76,20 +77,29 @@ then
 		}
 
 		 logInfo("hvacControl.rules", "tempMeasured="+tempMeasured)
-		 logInfo("hvacControl.rules", "low="+low)
-		 logInfo("hvacControl.rules", "high="+high)
+		 logInfo("hvacControl.rules", "low -> " + (low-hysteresis) + "/" + low + "/" + (low+hysteresis))
+		 logInfo("hvacControl.rules", "high -> " + (high-hysteresis) + "/" + high + " / " + (high+hysteresis))
+		 logInfo("hvacControl.rules", "ac="+airConditioner.state + "bo="+boiler.state)
 
-		if(tempMeasured < low)
+		if(tempMeasured < (low+hysteresis))
 		{
-			logInfo("hvacControl.rules", "temp is lower, heat the thing")
-			sendCommand(airConditioner, OFF)
-			sendCommand(boiler, ON)
+			logInfo("hvacControl.rules", "temp is lower, check hysteresis")
+			if(boiler.state == OFF && tempMeasured < (low-hysteresis))
+			{
+				logInfo("hvacControl.rules", "temp is below hysteresis, heat the thing")
+				sendCommand(airConditioner, OFF)
+				sendCommand(boiler, ON)
+			}
 		}
-		else if(tempMeasured > high)
+		else if(tempMeasured > (high-hysteresis))
 		{
-			logInfo("hvacControl.rules", "temp is higher, cool the thing")
-			sendCommand(airConditioner, ON)
-                        sendCommand(boiler, OFF)
+			logInfo("hvacControl.rules", "temp is higher, check hysteresis")
+			if(airConditioner.state == OFF && tempMeasured > (high+hysteresis))
+			{
+				logInfo("hvacControl.rules", "temp is above hysteresis, cool the thing")
+				sendCommand(airConditioner, ON)
+                        	sendCommand(boiler, OFF)
+			}
 		}
 		else
 		{

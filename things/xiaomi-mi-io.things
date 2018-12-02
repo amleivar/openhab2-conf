@@ -1,2 +1,2 @@
-Thing miio:basic:LivingCeil "LivingCeil" [ host="192.168.1.26", token="0cb7fcb890e1a5d72dfaa13aa05b00ad" ]
-Thing miio:basic:LivingLamp "LivingLamp" [ host="192.168.1.27", token="3cb34386d39adef226dda27e5e83044e" ]
+Thing miio:basic:RoomCeil "RoomCeil" [ host="192.168.1.26", token="4190356af6fc4bf151f005ecc6e3828b70610d1a825d03aaa243e1370ea18b690143db63ee66b0cdff9f69917680151e" ]
+Thing miio:basic:LivingLamp "LivingLamp" [ host="192.168.1.27", token="ba07023dbe302e2e7a9fe1030b299f23603c4289f94b7abb04500faa64a82ca10143db63ee66b0cdff9f69917680151e" ]

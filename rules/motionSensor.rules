@@ -1,0 +1,11 @@
+rule "motion sensor"
+when
+    Item motionRoom changed
+then
+    logInfo("motionSensor.rules", "motion change detected")
+    if (motionRoom.state == ON) {
+        roomScene.sendCommand(2)
+    } else {
+        roomScene.sendCommand(0)
+    }
+end

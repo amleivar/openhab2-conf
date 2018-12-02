@@ -8,16 +8,18 @@ val ReentrantLock lock  = new ReentrantLock()
 var Number SHUTTER_ONE_PERCENT_MS = 227
 var Number SHUTTER_FULL_MS = 26000
 
+
 rule "Shutter Control Rule"
 when
-    Item shutterLiv received command 
+    Item shutterLiv received command
 then
     lock.lock()
+    controlledBySlider = true
     try {
         var Number curr = receivedCommand as DecimalType
         var Number old = shutterLiv.previousState(true).state as DecimalType
         logInfo("sonoff-blinds-liv", "Curr:" + curr + " Old:" + old)
-        
+
         var Number workMs = Math::abs((curr-old).longValue) * SHUTTER_ONE_PERCENT_MS;
         if(curr == 0 || curr == 100)
         {
@@ -29,7 +31,7 @@ then
             workMs += SHUTTER_FULL_MS - (SHUTTER_ONE_PERCENT_MS*100);
         }
         logInfo("sonoff-blinds-liv", "workMs:" + workMs)
-        
+
         if(curr > old) // UP
         {
             sendCommand(blindsLivUp, ON)
@@ -42,8 +44,9 @@ then
             Thread::sleep(workMs.longValue)
             sendCommand(blindsLivDw, OFF)
         }
-        
+
     } finally {
         lock.unlock()
     }
+    controlledBySlider = false
 end

@@ -1,3 +1,12 @@
-Switch		LivinLampSw	 	"Bright"  	{channel="miio:basic:LivingLamp:power"}
+Switch		LivinLampSw	 	          "Power"  	                      {channel="miio:basic:LivingLamp:power"}
+Number		LivinLampBright	 	      "Brightness"  	              {channel="miio:basic:LivingLamp:brightness"}
+Number		LivinLampTemp	 	      "Temperature"  	              {channel="miio:basic:LivingLamp:colorTemperature"}
 
-Switch		LivinCeilSw	 	"Bright"  	{channel="miio:basic:LivingCeil:power"}
+String      RoomCeilCmd               "Command"                       {channel="miio:basic:RoomCeil:actions#commands" }
+Switch		RoomCeilSw	 	          "Bright"  	                  {channel="miio:basic:RoomCeil:power"}
+Number		RoomCeilBright	 	      "Brightness"  	              {channel="miio:basic:RoomCeil:brightness"}
+Number		RoomCeilTemp	 	      "Temperature"  	              {channel="miio:basic:RoomCeil:colorTemperature"}
+Number      RoomCeilDelayOff          "Shutdowm Timer"                {channel="miio:basic:RoomCeil:delayoff"}
+Number      RoomCeilColorMode         "Color Mode"                    {channel="miio:basic:RoomCeil:colorMode"}
+String      RoomCeilCustomScene       "Custom Scene [%s]"             {channel="miio:basic:RoomCeil:customScene"}
+Number      RoomCeilNightBright	      "Nightlight Brightness"         {channel="miio:basic:RoomCeil:nightlightBrightness"}
