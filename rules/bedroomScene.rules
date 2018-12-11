@@ -1,0 +1,38 @@
+rule "room scene"
+when
+    Item bedroomScene changed
+then
+    logInfo("bedroomScene","State changed to {}", bedroomScene.state)
+    switch (bedroomScene.state) {
+        case 0: {
+    		// OFF
+    		BedroomCeilSw.sendCommand(OFF)
+        }
+        case 1: {
+    		// MIN
+    		BedroomCeilSw.sendCommand(ON)
+            BedroomCeilCmd.sendCommand('set_power["on", "smooth", 500, 5]')
+    		BedroomCeilBright.sendCommand(1)
+    		BedroomCeilTemp.sendCommand(2000)
+            BedroomCeilNightBright.sendCommand(1)
+        }
+        case 2: {
+    		// MEDIUM
+    		BedroomCeilSw.sendCommand(ON)
+            BedroomCeilCmd.sendCommand('set_power["on", "smooth", 500, 5]')
+    		BedroomCeilBright.sendCommand(40)
+    		BedroomCeilTemp.sendCommand(2000)
+            BedroomCeilNightBright.sendCommand(30)
+        }
+        case 3: {
+    		// MAX
+    		BedroomCeilSw.sendCommand(ON)
+            BedroomCeilCmd.sendCommand('set_power["on", "smooth", 500, 1]')
+    		BedroomCeilBright.sendCommand(100)
+    		BedroomCeilTemp.sendCommand(2000)
+        }
+        default: {
+            logInfo("roomScene","incorrect state: {}", roomScene.state)
+        }
+    }
+end

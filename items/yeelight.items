@@ -10,3 +10,12 @@ Number      RoomCeilDelayOff          "Shutdowm Timer"                {channel="
 Number      RoomCeilColorMode         "Color Mode"                    {channel="miio:basic:RoomCeil:colorMode"}
 String      RoomCeilCustomScene       "Custom Scene [%s]"             {channel="miio:basic:RoomCeil:customScene"}
 Number      RoomCeilNightBright	      "Nightlight Brightness"         {channel="miio:basic:RoomCeil:nightlightBrightness"}
+
+String      BedroomCeilCmd            "Command"                       {channel="miio:basic:BedroomCeil:actions#commands" }
+Switch		BedroomCeilSw	 	      "Bright"  	                  {channel="miio:basic:BedroomCeil:power"}
+Number		BedroomCeilBright	 	  "Brightness"  	              {channel="miio:basic:BedroomCeil:brightness"}
+Number		BedroomCeilTemp	 	      "Temperature"  	              {channel="miio:basic:BedroomCeil:colorTemperature"}
+Number      BedroomCeilDelayOff       "Shutdowm Timer"                {channel="miio:basic:BedroomCeil:delayoff"}
+Number      BedroomCeilColorMode      "Color Mode"                    {channel="miio:basic:BedroomCeil:colorMode"}
+String      BedroomCeilCustomScene    "Custom Scene [%s]"             {channel="miio:basic:BedroomCeil:customScene"}
+Number      BedroomCeilNightBright	  "Nightlight Brightness"         {channel="miio:basic:BedroomCeil:nightlightBrightness"}

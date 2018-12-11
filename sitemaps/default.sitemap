@@ -25,6 +25,7 @@ sitemap default label="Sabal's house"
 	Frame label="Scenes" {
 		Switch	item=livinScene mappings=[0="OFF", 1="Min", 2="Medium", 3="Max"]
 		Switch	item=roomScene mappings=[0="OFF", 1="Min", 2="Medium", 3="Max"]
+		Switch	item=bedroomScene mappings=[0="OFF", 1="Min", 2="Medium", 3="Max"]
 	}
 
 	Frame label="Rollershutter" {
